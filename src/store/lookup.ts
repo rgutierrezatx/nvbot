@@ -49,7 +49,7 @@ async function lookup(browser: Browser, store: Store) {
 		try {
 			statusCode = await lookupCard(browser, store, page, link);
 			
-			if (statusCode === 503) {
+			if (statusCode === 503 || statusCode === 504) {
 				sendNotification(link, store, 'Possible false positive');
 				//wait 10 seconds to avoid issue with ip ban
 				await delay(10000);
